@@ -18,7 +18,7 @@ export default function GallaryItem({ poster_path, title, id, release_date }) {
             )}
           </div>
           <Text>{title}</Text>
-          <Text>{new Date(release_date).getFullYear()}</Text>
+          <Text>{release_date && new Date(release_date).getFullYear()}</Text>
         </Box>
       </Link>
     </>

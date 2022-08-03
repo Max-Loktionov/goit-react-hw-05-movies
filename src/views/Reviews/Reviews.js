@@ -25,7 +25,7 @@ function Reviews() {
           ))}
         </Wrapper>
       ) : (
-        'We cannot find any reviews'
+        <p>We cannot find any reviews</p>
       )}
     </section>
   );

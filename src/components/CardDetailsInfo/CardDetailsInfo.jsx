@@ -26,8 +26,10 @@ export default function CardDetailsInfo({
         <Statistic>
           <p> Vote: {vote_average}</p>
           <p>Total vote: {vote_count}</p>
-          <p>Release date: {release_date}</p>
-          {genres && <p>Genres: {genres.map(({ name }) => name).join(', ')}</p>}
+          {release_date && <p>Release date: {release_date}</p>}
+          {genres?.length > 0 && (
+            <p>Genres: {genres.map(({ name }) => name).join(', ')}</p>
+          )}
         </Statistic>
       </TextBox>
     </Box>
@@ -36,10 +38,14 @@ export default function CardDetailsInfo({
 
 CardDetailsInfo.propTypes = {
   poster_path: PropTypes.string,
-  title: PropTypes.string,
-  vote_average: PropTypes.number,
-  vote_count: PropTypes.number,
-  overview: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  vote_average: PropTypes.number.isRequired,
+  vote_count: PropTypes.number.isRequired,
+  overview: PropTypes.string.isRequired,
   release_date: PropTypes.string,
-  genres: PropTypes.array,
+  genres: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+    })
+  ),
 };

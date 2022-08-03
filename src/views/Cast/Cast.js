@@ -18,7 +18,8 @@ export default function Cast() {
 
   return (
     <section>
-      {cast && (
+      <h2>Cast</h2>
+      {cast.length > 0 ? (
         <Wrapper>
           {cast.map(item => (
             <CastItem key={item.id}>
@@ -32,6 +33,8 @@ export default function Cast() {
             </CastItem>
           ))}
         </Wrapper>
+      ) : (
+        <p>We cannot find the cast</p>
       )}
     </section>
   );

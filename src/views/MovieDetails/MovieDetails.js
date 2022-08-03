@@ -42,11 +42,15 @@ export default function MovieDetails() {
 
           <List>
             <li>
-              <Link to="cast">Read about cast</Link>
+              <Link to="cast" state={{ from: location.state.from ?? '/' }}>
+                Read about cast
+              </Link>
             </li>
 
             <li>
-              <Link to="reviews">Go through the reviews</Link>
+              <Link to="reviews" state={{ from: location.state.from ?? '/' }}>
+                Go through the reviews
+              </Link>
             </li>
           </List>
           <Suspense fallback={<PropagateLoader color="#41d61f" />}>

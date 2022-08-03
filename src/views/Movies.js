@@ -29,7 +29,7 @@ export default function Movies() {
         </div>
       )}
       {movies?.length === 0 && searchQuery !== '' && (
-        <>`We cannot find this movie: ${searchQuery}`</>
+        <p>We cannot find this movie: {searchQuery}</p>
       )}
     </>
   );

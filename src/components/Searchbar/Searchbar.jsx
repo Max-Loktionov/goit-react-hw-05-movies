@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { SearchForm, Button, InputSearch } from './Searchbar.styled';
 
 function Searchbar({ onSubmitSearchForm, searchQuery }) {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState(searchQuery);
 
   const handleChange = event => {
     const { value } = event.currentTarget;
@@ -33,7 +33,7 @@ function Searchbar({ onSubmitSearchForm, searchQuery }) {
       </Button>
 
       <InputSearch
-        value={searchQuery?.length !== 0 ? searchQuery : query}
+        value={query}
         onChange={handleChange}
         type="text"
         autoComplete="off"

@@ -28,7 +28,7 @@ export const fetchMovieDetails = async id => {
 
 export const fetchCast = async id => {
   const movieId = id;
-  const url = `${BASE_URL}/movie/${movieId}/credits?api_key=${KEY}`;
+  const url = `${BASE_URL}/movie/${movieId}/credits?api_key=${KEY}&page=1&per_page=18`;
   const response = await axios(url);
 
   return response.data.cast;

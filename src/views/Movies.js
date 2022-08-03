@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import * as movieAPI from '../services/movieAPI';
 import SearchBar from 'components/Searchbar';
 import Gallery from 'components/Gallery';
@@ -18,23 +17,20 @@ export default function Movies() {
       return;
     }
 
-    movieAPI
-      .fetchSearchMovies(searchQuery)
-      .then(setMovies)
-      .then(() => {
-        if (movies?.length === 0) {
-          return toast.warn(`We cannot find this movie: ${searchQuery}`, {
-            autoClose: 3000,
-            theme: 'dark',
-          });
-        }
-      });
+    movieAPI.fetchSearchMovies(searchQuery).then(setMovies);
   }, [searchQuery]);
 
   return (
     <>
       <SearchBar onSubmitSearchForm={handleSubmit} searchQuery={searchQuery} />
-      <div>{movies && <Gallery movies={movies} />}</div>
+      {movies && (
+        <div>
+          <Gallery movies={movies} />
+        </div>
+      )}
+      {movies?.length === 0 && searchQuery !== '' && (
+        <>`We cannot find this movie: ${searchQuery}`</>
+      )}
     </>
   );
 }
